@@ -1,19 +1,16 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards, ParseUUIDPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, ParseUUIDPipe } from '@nestjs/common';
 import { ApiBearerAuth, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 
 import { ExampleService } from '../services/example.service';
-import { AuthGuard, RolesGuard } from '../../auth/guards';
 import { CreateExampleDto } from '../dto/create-example.dto';
 import { QueryDto } from '../../common/dto/query.dto';
 import { UpdateExampleDto } from '../dto/update-example.dto';
 import { ExampleEntity } from '../entities/example.entity';
 import { DeleteMessage } from '../../common/interfaces/delete-message.interface';
-import { RolesAccess } from '../../auth/decorators';
 import { ORDER_ENUM } from '../../common/constants';
 
 @ApiTags('Example')
 @ApiBearerAuth()
-@UseGuards(AuthGuard, RolesGuard)
 @Controller('example')
 export class ExampleController {
 
@@ -46,7 +43,6 @@ export class ExampleController {
     return this.exampleService.update(id, updateExampleDto);
   }
 
-  @RolesAccess('ADMIN')
   @ApiParam({ name: 'id', type: 'string' })
   @Delete(':id')
   remove(@Param('id', ParseUUIDPipe) id: string): Promise<DeleteMessage> {

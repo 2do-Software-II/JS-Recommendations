@@ -1,8 +1,6 @@
 import { Body, Controller, Get, Delete, Param, UseGuards, ParseUUIDPipe, Query, Patch, } from '@nestjs/common';
 import { ApiBearerAuth, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger/dist';
 
-import { RolesAccess } from '../../auth/decorators/roles.decorator';
-import { AuthGuard, RolesGuard } from '../../auth/guards/';
 import { UpdateUserDto } from '../dto/';
 import { UserService } from '../services/users.service';
 import { QueryDto } from '../../common/dto/query.dto';
@@ -10,7 +8,6 @@ import { ResponseMessage } from 'src/common/interfaces/responseMessage.interface
 
 @ApiTags('Users')
 @ApiBearerAuth()
-@UseGuards(AuthGuard, RolesGuard)
 @Controller('user')
 export class UsersController {
   constructor(private readonly userService: UserService) { }
@@ -48,7 +45,6 @@ export class UsersController {
     };
   }
 
-  @RolesAccess('ADMIN')
   @ApiParam({ name: 'id', type: 'string' })
   @Delete(':id')
   public async delete(@Param('id', ParseUUIDPipe) id: string): Promise<ResponseMessage> {
