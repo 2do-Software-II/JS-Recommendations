@@ -31,6 +31,7 @@
     "db:delete:test": "npm run db:drop:test && npm run db:sync:test"
   },
   "dependencies": {
+    "@apollo/client": "^3.10.4",
     "@nestjs/axios": "^3.0.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.0.0",
@@ -41,8 +42,11 @@
     "@nestjs/typeorm": "^10.0.0",
     "axios": "^1.5.0",
     "bcrypt": "^5.1.0",
+    "brain.js": "^2.0.0-beta.23",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "cross-fetch": "^4.0.0",
+    "graphql": "^16.8.1",
     "joi": "^17.9.1",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
