@@ -5,6 +5,10 @@
   "author": "NahuelXZV",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": "20.x",
+    "npm": "10.8.1"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -29,10 +33,6 @@
     "db:drop:test": "typeorm-ts-node-esm schema:drop -d ./test/config/data.source.ts",
     "db:sync:test": "typeorm-ts-node-esm schema:sync -d ./test/config/data.source.ts",
     "db:delete:test": "npm run db:drop:test && npm run db:sync:test"
-  },
-  "engines": {
-    "node": "14.x",
-    "npm": "10.8.1"
   },
   "dependencies": {
     "@apollo/client": "^3.10.4",
