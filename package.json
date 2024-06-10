@@ -5,10 +5,6 @@
   "author": "NahuelXZV",
   "private": true,
   "license": "UNLICENSED",
-  "engines": {
-    "node": "20.x",
-    "npm": "10.8.1"
-  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
